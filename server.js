@@ -147,7 +147,14 @@ module.exports = (options) => {
   // socket.io instance
   let io = require('socket.io')(server);
   io.on('connection', (socket) => {
-    socket.on('createTunnel', (requestedName, responseCb) => {
+    socket.on('createTunnel', (requestApp, requestedName, responseCb) => {
+	  if (requestedApp != 'GRIN'){
+        if (responseCb) {
+          responseCb('bad app');
+        }
+        return socket.disconnect();
+      }
+
       if (socket.requestedName) {
         // tunnel has already been created
         return;
