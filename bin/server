@@ -18,6 +18,10 @@ var argv = optimist
     default: '',
     describe: 'Name of subdomain used. Required when server listens on a subdomain (leave blank otherwise)'
   })
+  .options('a', {
+    alias: 'app',
+    describe: '(Required) app name'
+  })
   .argv;
 
 if (argv.help) {
