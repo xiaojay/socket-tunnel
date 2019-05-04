@@ -13,6 +13,11 @@ module.exports = (options) => {
 
   // bounce incoming http requests to socket.io
   let server = http.createServer(async (req, res) => {
+    //const { headers, method, url } = req;
+    //if (!(url.startsWith('/socket.io') || url.startsWith('/v1') || url.startsWith('/v2'))){
+    //  res.statusCode = 404
+    //  response.end()
+    //}
     getTunnelClientStreamForReq(req).then((tunnelClientStream) => {
       const reqBodyChunks = [];
 
